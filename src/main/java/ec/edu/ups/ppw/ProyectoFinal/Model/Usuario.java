@@ -1,7 +1,5 @@
 package ec.edu.ups.ppw.ProyectoFinal.Model;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 

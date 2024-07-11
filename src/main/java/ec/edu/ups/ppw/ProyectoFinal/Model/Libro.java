@@ -14,7 +14,7 @@ public class Libro {
 	private String Categoria;
 	private String autor;
 	private String imagen;
-	private boolean disponibilidad;
+	private String estado;
 	
 	public int getCodigo() {
 		return codigo;
@@ -22,11 +22,12 @@ public class Libro {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public boolean isDisponibilidad() {
-		return disponibilidad;
+	
+	public String getEstado() {
+		return estado;
 	}
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public String getNombre() {
 		return nombre;
