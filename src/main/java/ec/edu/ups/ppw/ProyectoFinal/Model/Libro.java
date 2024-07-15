@@ -1,17 +1,26 @@
 package ec.edu.ups.ppw.ProyectoFinal.Model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
 public class Libro {
 	
 	@Id
+	@GeneratedValue
 	private int codigo;
+	
 	private String nombre;
 	private Double precio;
-	private String Categoria;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Categoria")
+	private Categoria Categoria;
 	private String autor;
 	private String imagen;
 	private String estado;
@@ -41,10 +50,11 @@ public class Libro {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	public String getCategoria() {
+	
+	public Categoria getCategoria() {
 		return Categoria;
 	}
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		Categoria = categoria;
 	}
 	public String getAutor() {

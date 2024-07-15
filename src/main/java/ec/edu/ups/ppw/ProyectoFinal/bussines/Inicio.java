@@ -1,10 +1,12 @@
 package ec.edu.ups.ppw.ProyectoFinal.bussines;
 
 
+import ec.edu.ups.ppw.ProyectoFinal.DAO.CategoriaDAO;
 import ec.edu.ups.ppw.ProyectoFinal.DAO.LibroDAO;
-import ec.edu.ups.ppw.ProyectoFinal.DAO.PrestamoDAO;
+import ec.edu.ups.ppw.ProyectoFinal.DAO.UsuarioDAO;
+import ec.edu.ups.ppw.ProyectoFinal.Model.Categoria;
 import ec.edu.ups.ppw.ProyectoFinal.Model.Libro;
-import ec.edu.ups.ppw.ProyectoFinal.Model.Prestamo;
+import ec.edu.ups.ppw.ProyectoFinal.Model.Usuario;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
@@ -15,35 +17,56 @@ import jakarta.inject.Inject;
 public class Inicio {
 	
 	@Inject
-	private LibroDAO daoLibro;
+	private CategoriaDAO gc;
 	
 	@Inject
-	private PrestamoDAO daoPrestamo;
+	private LibroDAO gs;
+	
+	@Inject
+	private UsuarioDAO gu;
 	
 	@PostConstruct
 	public void init() {
-		System.out.println("Hola mundo EJB");
+		System.out.println("----------------INICIANDO----------------");
+		
+		// Categorias de libros a insertar
+		String[] categorias = {"Drama", "Ciencia Ficcion", "Fantasia", "Historia", "Biografia",
+		                       "Misterio", "Romance", "Aventura", "Terror", "Poesia", "Auto Ayuda"};
+
+		// Bucle para crear e insertar cada categoria
+		for (String nombreCategoria : categorias) {
+		    Categoria cat = new Categoria();  
+		    cat.setNombre(nombreCategoria);   
+		    gc.insert(cat);                   
+		}
+
+		
+		Libro li = new Libro();
+		
+		li.setNombre("Where the eyes can't go");
+		li.setPrecio(15.0);
+		li.setCategoria(gc.read("Terror"));
+		li.setImagen("https://firebasestorage.googleapis.com/v0/b/owl-s-quill.appspot.com/o/images%2FIMG_20220129_180131_682.jpg?alt=media&token=414ae1af-0000-45eb-8f8f-9706f1a95dec");
+		li.setEstado("Reservado");
+		li.setAutor("Stephen King");
+		System.out.println(li.toString());
+		
+		gs.insertLibro(li);
 		
 		
-		Libro libro = new Libro();
-		libro.setAutor("Diego");
-		libro.setCategoria("Musica");
-		libro.setEstado("Reservado");
-		libro.setImagen(null);
-		libro.setNombre("Mejores canciones de la decada");
-		libro.setPrecio(20.00);
+		gs.insertLibro(li);
 		
-		daoLibro.insertLibro(libro);
+		Usuario us = new Usuario();
+		us.setUsuario("dcarrionp");
+		us.setRol("admin");
 		
-		Prestamo pre = new Prestamo();
+		gu.insert(us);
 		
-		pre.setLibro(libro);
-		pre.setFechaDevolucion(null);
-		pre.setFechaPrestamo(null);
-		pre.setUsuario(null);
+		us = new Usuario();
+		us.setUsuario("SanDiego");
+		us.setRol("common");
 		
-		daoPrestamo.insert(pre);
-		
+		gu.insert(us);
 		
 	}
 	
