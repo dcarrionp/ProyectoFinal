@@ -1,13 +1,9 @@
 package ec.edu.ups.ppw.ProyectoFinal.Model;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -16,11 +12,11 @@ public class Usuario {
 	@GeneratedValue
 	private int codigo;
 
+	@Column(unique = true)
 	private String usuario;
 	private String rol;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "historial")
+	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario")
 	private List<Prestamo> historial;
 
 	public List<Prestamo> getHistorial() {
@@ -29,7 +25,7 @@ public class Usuario {
 
 	public void setHistorial(List<Prestamo> historial) {
 		this.historial = historial;
-	}
+	}*/
 
 	public int getCodigo() {
 		return codigo;
@@ -57,7 +53,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "usuario [codigo=" + codigo + ", usuario=" + usuario + ", rol=" + rol + ", historial=" + historial + "]";
+		return "usuario [codigo=" + codigo + ", usuario=" + usuario + ", rol=" + rol + "]";
 	}
 
 	public String getRol() {

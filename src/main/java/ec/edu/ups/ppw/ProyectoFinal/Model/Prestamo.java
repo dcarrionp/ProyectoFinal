@@ -1,6 +1,6 @@
 package ec.edu.ups.ppw.ProyectoFinal.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,9 +15,9 @@ public class Prestamo {
 	@Id
 	private int codigo;
 	@Temporal(TemporalType.DATE)
-	private Date fechaInicio;
+	private LocalDate fechaInicio;
 	@Temporal(TemporalType.DATE)
-	private Date fechaFin;
+	private LocalDate fechaFin;
 	private String estado;
 
 	@ManyToOne
@@ -27,21 +27,47 @@ public class Prestamo {
 	@ManyToOne
 	@JoinColumn(name = "libro")
 	private Libro libro;
+	
+	
+	
+	public int getCodigo() {
+		return codigo;
+	}
 
-	public Date getFechaInicio() {
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
 	}
 
 	public String getEstado() {

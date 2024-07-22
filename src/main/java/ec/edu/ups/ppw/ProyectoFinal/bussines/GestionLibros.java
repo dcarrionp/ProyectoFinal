@@ -13,44 +13,44 @@ public class GestionLibros {
 	@Inject
 	private LibroDAO daoLibro;
 
-	public Libro getLibro(String nombre) throws Exception {
-		if (nombre.length() < 1) {
-			throw new Exception("Nombre incorrecto");
-		}
-
-		Libro libro = daoLibro.read(nombre);
-		if (libro == null) {
-			throw new Exception("Libro no existe");
-		}
-		return libro;
+	public void setLibro(Libro li) {
+		daoLibro.insertLibro(li);
 	}
-
-	public List<Libro> getLibros() {
+	
+	public void actualiar(Libro cliente) {
+		daoLibro.update(cliente);
+	}
+	
+	public void borrar(String ci) {
+		Libro cli = daoLibro.read(ci);
+		daoLibro.delete(cli);
+	}
+	
+	public List<Libro> getAll(){
 		return daoLibro.getAll();
 	}
-
-	public void createLibro(Libro libro) throws Exception {
-		if (libro.getNombre().length() < 1) {
-			throw new Exception("Nombre incorrecto");
+	
+	public Libro getLibro(String nombre) throws Exception {
+		Libro li =  daoLibro.read(nombre);
+		if(nombre.length()<1) {
+			throw new Exception("Nombre Incorrecto");
 		}
-		daoLibro.insertLibro(libro);
-	}
-
-	public void updateLibro(Libro libro) throws Exception {
-		if (libro.getNombre().length() < 1) {
-			throw new Exception("Nombre incorrecto");
-		}
-		daoLibro.update(libro);
-	}
-
-	public void deleteLibro(String nombre) throws Exception {
-		if (nombre.length() < 1) {
-			throw new Exception("Nombre incorrecto");
-		}
-		Libro libro = daoLibro.read(nombre);
-		if (libro == null) {
+		if(li==null) {
 			throw new Exception("Libro no existe");
 		}
-		daoLibro.delete(nombre);
+		return li;
+	}
+	
+	
+	public List<Libro> getCategoria(String cat){
+		return daoLibro.getxCategoria(cat);
+	}
+
+	public List<Libro> getAutor(String autor){
+		return daoLibro.getLibrosByAutor(autor);
+	}
+
+	public List<Libro> getDisponibilidad(boolean dispo){
+		return daoLibro.getLibrosByDisponibilidad(dispo);
 	}
 }

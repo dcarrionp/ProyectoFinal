@@ -39,6 +39,7 @@ public class CategoriaDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Categoria> getAll() {
 		String jpql = "SELECT c FROM Categoria c ORDER BY codigo";
 		Query query = em.createQuery(jpql, Categoria.class);

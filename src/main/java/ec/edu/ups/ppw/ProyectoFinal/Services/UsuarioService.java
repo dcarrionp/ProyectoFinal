@@ -79,7 +79,7 @@ public class UsuarioService {
 			li = gu.read(nombre);
 			return Response.ok(li).build();
 		} catch (Exception e) {
-			message em = new message(11, "No se encuentra la categoria");
+			message em = new message(11, "No se encuentra el usuario");
 			return Response.status(Response.Status.NOT_FOUND)
 					.entity(em)
 					.build();
