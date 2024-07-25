@@ -32,4 +32,12 @@ public class GestionPrestamos {
 	public List<Prestamo> getAll(){
 		return dao.getAll();
 	}
+	
+	public List<Prestamo> getUsuario(String usuario){
+		return dao.getUsuario(usuario);
+	}
+
+	public List<Prestamo> getLibro(String libro){
+		return dao.getPrestamosByNombreLibro(libro);
+	}
 }

@@ -1,11 +1,13 @@
 package ec.edu.ups.ppw.ProyectoFinal.Model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Libro {
@@ -14,6 +16,7 @@ public class Libro {
 	@GeneratedValue
 	private int codigo;
 
+	@Column(unique = true)
 	private String nombre;
 	private Double precio;
 
@@ -24,6 +27,16 @@ public class Libro {
 	private String imagen;
 	private Boolean estado;
 	
+	@Transient
+    private String categoriaNombre;
+	
+	
+	public String getCategoriaNombre() {
+		return categoriaNombre;
+	}
+	public void setCategoriaNombre(String categoriaNombre) {
+		this.categoriaNombre = categoriaNombre;
+	}
 	public int getCodigo() {
 		return codigo;
 	}

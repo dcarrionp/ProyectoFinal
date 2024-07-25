@@ -19,6 +19,7 @@ public class CORSFilter implements ContainerResponseFilter{
 
         if ("OPTIONS".equalsIgnoreCase(requestContext.getMethod())) {
             responseContext.setStatus(Response.Status.OK.getStatusCode());
+            //Reportes de reserva admin, validacion de usuarios para la reserva. 
         }
     }
 }

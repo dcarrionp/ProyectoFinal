@@ -36,12 +36,8 @@ public class Inicio {
 	@PostConstruct
 	public void init() {
 		System.out.println("----------------INICIANDO----------------");
-		
-		// Categorias de libros a insertar
 		String[] categorias = {"Drama", "Ciencia Ficcion", "Fantasia", "Historia", "Biografia",
 		                       "Misterio", "Romance", "Aventura", "Terror", "Poesia", "Auto Ayuda"};
-
-		// Bucle para crear e insertar cada categoria
 		for (String nombreCategoria : categorias) {
 		    Categoria cat = new Categoria();  
 		    cat.setNombre(nombreCategoria);   
@@ -53,13 +49,124 @@ public class Inicio {
 		
 		li.setNombre("Where the eyes can't go");
 		li.setPrecio(15.0);
-		li.setCategoria(gc.read("Terror"));
+		li.setCategoriaNombre("Terror");
 		li.setImagen("https://firebasestorage.googleapis.com/v0/b/owl-s-quill.appspot.com/o/images%2FIMG_20220129_180131_682.jpg?alt=media&token=414ae1af-0000-45eb-8f8f-9706f1a95dec");
 		li.setEstado(true);
 		li.setAutor("Stephen King");
 		System.out.println(li.toString());
-		
 		gs.insertLibro(li);
+		
+		li = new Libro();
+		li.setAutor("Harper Lee");
+		li.setNombre("To Kill a Mockingbird");
+		li.setCategoriaNombre("Drama");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81OdwZ7jFOL.jpg");
+		li.setPrecio(25.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("George Orwell");
+		li.setNombre("1984");
+		li.setCategoriaNombre("Ciencia Ficcion");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg");
+		li.setPrecio(30.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("J.K. Rowling");
+		li.setNombre("Harry Potter and the Sorcerer's Stone");
+		li.setCategoriaNombre("Fantasia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/91HHqVTAJQL.jpg");
+		li.setPrecio(35.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Anne Frank");
+		li.setNombre("The Diary of a Young Girl");
+		li.setCategoriaNombre("Biografia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/91H5FrOBxbL.jpg");
+		li.setPrecio(20.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+		
+		li = new Libro();
+		li.setAutor("Julio Cortazar");
+		li.setNombre("Rayuela");
+		li.setCategoriaNombre("Historia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/91H5FrOBxbL.jpg");
+		li.setPrecio(20.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Arthur Conan Doyle");
+		li.setNombre("Sherlock Holmes: The Complete Collection");
+		li.setCategoriaNombre("Misterio");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81+QdpA-BLL.jpg");
+		li.setPrecio(40.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Herman Melville");
+		li.setNombre("Moby Dick");
+		li.setCategoriaNombre("Aventura");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81eA+8w+YYL.jpg");
+		li.setPrecio(28.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Mary Shelley");
+		li.setNombre("Frankenstein");
+		li.setCategoriaNombre("Terror");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81saZy9K8xL.jpg");
+		li.setPrecio(22.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Robert Frost");
+		li.setNombre("The Poetry of Robert Frost");
+		li.setCategoriaNombre("Poesia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81udWYEXefL.jpg");
+		li.setPrecio(18.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Jane Austen");
+		li.setNombre("Pride and Prejudice");
+		li.setCategoriaNombre("Romance");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81-vL6r8+7L.jpg");
+		li.setPrecio(25.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Dale Carnegie");
+		li.setNombre("How to Win Friends and Influence People");
+		li.setCategoriaNombre("Auto Ayuda");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg");
+		li.setPrecio(20.00);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		
 		
 		Usuario us = new Usuario();
 		us.setUsuario("dcarrionp");
@@ -68,10 +175,62 @@ public class Inicio {
 		gu.insert(us);
 		
 		us = new Usuario();
-		us.setUsuario("SanDiego");
+		us.setUsuario("dcportilla2003@gmail.com");
 		us.setRol("common");
 		
 		gu.insert(us);
+
+		// Insertar usuarios
+		us = new Usuario();
+		us.setUsuario("usuario1@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario2@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario3@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario4@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario5@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario6@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario7@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario8@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario9@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
+		us = new Usuario();
+		us.setUsuario("usuario10@example.com");
+		us.setRol("common");
+		gu.insert(us);
+
 		
 		Prestamo pre = new Prestamo();
 
@@ -81,11 +240,122 @@ public class Inicio {
         LocalDate fechaFin = LocalDate.parse("2024-07-17", formatter);
 
 		pre.setFechaFin(fechaFin);
-		pre.setLibro(li);
-		pre.setUsuario(us);
+		pre.setLibroNombre("Rayuela");
+		pre.setUsuarioEmail("dcportilla2003@gmail.com");
 		pre.setEstado("Reservado");
 
 		gp.insert(pre);
+		
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.now());
+		fechaFin = LocalDate.parse("2024-08-23", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("To Kill a Mockingbird");
+		pre.setUsuarioEmail("usuario1@example.com");
+		pre.setEstado("Reservado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.parse("2024-06-13", formatter));
+		fechaFin = LocalDate.parse("2024-07-13", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("1984");
+		pre.setUsuarioEmail("usuario2@example.com");
+		pre.setEstado("Atrasado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.now());
+		fechaFin = LocalDate.parse("2024-09-01", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("Harry Potter and the Sorcerer's Stone");
+		pre.setUsuarioEmail("usuario3@example.com");
+		pre.setEstado("Disponible");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.parse("2024-07-01", formatter));
+		fechaFin = LocalDate.parse("2024-07-30", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("The Diary of a Young Girl");
+		pre.setUsuarioEmail("usuario4@example.com");
+		pre.setEstado("Reservado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.now());
+		fechaFin = LocalDate.parse("2024-10-10", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("Sherlock Holmes: The Complete Collection");
+		pre.setUsuarioEmail("usuario5@example.com");
+		pre.setEstado("Atrasado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.parse("2024-06-01", formatter));
+		fechaFin = LocalDate.parse("2024-06-30", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("Moby Dick");
+		pre.setUsuarioEmail("usuario6@example.com");
+		pre.setEstado("Disponible");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.now());
+		fechaFin = LocalDate.parse("2024-08-15", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("Frankenstein");
+		pre.setUsuarioEmail("usuario7@example.com");
+		pre.setEstado("Reservado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.parse("2024-07-01", formatter));
+		fechaFin = LocalDate.parse("2024-07-31", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("The Poetry of Robert Frost");
+		pre.setUsuarioEmail("usuario8@example.com");
+		pre.setEstado("Atrasado");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.now());
+		fechaFin = LocalDate.parse("2024-09-01", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("Pride and Prejudice");
+		pre.setUsuarioEmail("usuario9@example.com");
+		pre.setEstado("Disponible");
+		gp.insert(pre);
+
+		pre = new Prestamo();
+
+		pre.setFechaInicio(LocalDate.parse("2024-06-15", formatter));
+		fechaFin = LocalDate.parse("2024-07-15", formatter);
+		pre.setFechaFin(fechaFin);
+
+		pre.setLibroNombre("How to Win Friends and Influence People");
+		pre.setUsuarioEmail("usuario10@example.com");
+		pre.setEstado("Reservado");
+		gp.insert(pre);
+
 		
 	}
 	

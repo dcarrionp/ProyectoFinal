@@ -2,6 +2,7 @@ package ec.edu.ups.ppw.ProyectoFinal.DAO;
 
 import java.util.List;
 
+import ec.edu.ups.ppw.ProyectoFinal.Model.Categoria;
 import ec.edu.ups.ppw.ProyectoFinal.Model.Libro;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -16,11 +17,37 @@ public class LibroDAO {
 	private EntityManager em;
 	
 	public void insertLibro(Libro li) {
-		em.persist(li);
+		TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre", Categoria.class);
+        query.setParameter("nombre", li.getCategoriaNombre());
+        Categoria managedCategoria;
+        try {
+            managedCategoria = query.getSingleResult();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
+        }
+
+        // Asignar la categoría gestionada al libro
+        li.setCategoria(managedCategoria);
+
+        // Persistir el libro
+        em.persist(li);
 	}
 	
 	public void update(Libro li) {
-		em.merge(li);
+		// 1. Buscar la categoría en la base de datos usando el nombre de la categoría recibido
+        TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre", Categoria.class);
+        query.setParameter("nombre", li.getCategoriaNombre());
+        Categoria managedCategoria;
+        try {
+            managedCategoria = query.getSingleResult();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
+        }
+
+        li.setCategoria(managedCategoria);
+
+        // 3. Actualizar el libro
+        em.merge(li);
 	}
 	
 	public void delete(Libro li) {
@@ -45,9 +72,9 @@ public class LibroDAO {
 	
 	
 	public List<Libro> getxCategoria(String cat){
-		String jpql = "SELECT l FROM Libro l JOIN l.categoria c WHERE c.nombre = :categoriaNombre ORDER BY l.codigo";
+		String jpql = "SELECT l FROM Libro l JOIN l.Categoria c WHERE c.nombre = :CategoriaNombre ORDER BY l.codigo";
 	    TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
-	    query.setParameter("categoriaNombre", cat);
+	    query.setParameter("CategoriaNombre", cat);
 	    return query.getResultList();
 	}
 
