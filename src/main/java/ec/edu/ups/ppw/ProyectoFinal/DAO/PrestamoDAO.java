@@ -1,5 +1,6 @@
 package ec.edu.ups.ppw.ProyectoFinal.DAO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import ec.edu.ups.ppw.ProyectoFinal.Model.Libro;
@@ -7,6 +8,7 @@ import ec.edu.ups.ppw.ProyectoFinal.Model.Prestamo;
 import ec.edu.ups.ppw.ProyectoFinal.Model.Usuario;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -75,6 +77,47 @@ public class PrestamoDAO {
         String jpql = "SELECT p FROM Prestamo p JOIN p.libro l WHERE l.nombre = :nombre ORDER BY p.codigo";
         TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
         query.setParameter("nombre", nombre);
+        return query.getResultList();
+    }
+    
+    public List<Usuario> getUsuariosConPrestamos() {
+        String jpql = "SELECT DISTINCT p.usuario FROM Prestamo p";
+        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+        return query.getResultList();
+    }
+
+    // Obtener los préstamos por usuario
+    public List<Prestamo> getPrestamosPorUsuario(Usuario user) {
+        String jpql = "SELECT p FROM Prestamo p WHERE p.usuario = :usuario";
+        TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
+        query.setParameter("usuario", user);
+        return query.getResultList();
+    }
+
+    public Libro getLibroByName(String nombre) {
+        TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.nombre = :nombre", Libro.class);
+        query.setParameter("nombre", nombre);
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null; // O lanza una excepción si prefieres manejarlo de otra forma
+        }
+    }
+
+    public long getCountReservasByLibro(String nombreLibro) {
+        TypedQuery<Long> query = em.createQuery(
+            "SELECT COUNT(p) FROM Prestamo p WHERE p.libro.nombre = :nombreLibro AND p.estado = 'Reservado'", Long.class);
+        query.setParameter("nombreLibro", nombreLibro);
+        return query.getSingleResult();
+    }
+
+    public List<Prestamo> getReservasEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        TypedQuery<Prestamo> query = em.createQuery(
+            "SELECT p FROM Prestamo p WHERE p.fechaInicio >= :fechaInicio AND p.fechaFin <= :fechaFin", 
+            Prestamo.class
+        );
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
         return query.getResultList();
     }
 	
