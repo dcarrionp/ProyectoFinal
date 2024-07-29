@@ -61,7 +61,7 @@ public class Inicio {
 		li.setNombre("To Kill a Mockingbird");
 		li.setCategoriaNombre("Drama");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81OdwZ7jFOL.jpg");
+		li.setImagen("https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg");
 		li.setPrecio(25.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);
@@ -91,7 +91,7 @@ public class Inicio {
 		li.setNombre("The Diary of a Young Girl");
 		li.setCategoriaNombre("Biografia");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/91H5FrOBxbL.jpg");
+		li.setImagen("https://images.thenile.io/r1000/9780241952443.jpg");
 		li.setPrecio(20.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);
@@ -101,7 +101,7 @@ public class Inicio {
 		li.setNombre("Rayuela");
 		li.setCategoriaNombre("Historia");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/91H5FrOBxbL.jpg");
+		li.setImagen("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rayuela_JC.png/640px-Rayuela_JC.png");
 		li.setPrecio(20.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);
@@ -111,7 +111,7 @@ public class Inicio {
 		li.setNombre("Sherlock Holmes: The Complete Collection");
 		li.setCategoriaNombre("Misterio");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81+QdpA-BLL.jpg");
+		li.setImagen("https://m.media-amazon.com/images/I/91XHDtSt7qL._AC_UF1000,1000_QL80_.jpg");
 		li.setPrecio(40.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);
@@ -121,7 +121,7 @@ public class Inicio {
 		li.setNombre("Moby Dick");
 		li.setCategoriaNombre("Aventura");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81eA+8w+YYL.jpg");
+		li.setImagen("https://m.media-amazon.com/images/I/61PBBKyZ1rL._AC_UF1000,1000_QL80_.jpg");
 		li.setPrecio(28.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);
@@ -131,7 +131,7 @@ public class Inicio {
 		li.setNombre("Frankenstein");
 		li.setCategoriaNombre("Terror");
 		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81saZy9K8xL.jpg");
+		li.setImagen("https://mpd-biblio-covers.imgix.net/9780812551501.jpg");
 		li.setPrecio(22.00);
 		System.out.println(li.toString());
 		gs.insertLibro(li);

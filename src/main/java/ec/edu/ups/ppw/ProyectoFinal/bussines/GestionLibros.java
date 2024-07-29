@@ -41,6 +41,9 @@ public class GestionLibros {
 		return li;
 	}
 	
+    public void borrar(int codigoLibro) throws Exception {
+        daoLibro.borrar(codigoLibro);
+    }
 	
 	public List<Libro> getCategoria(String cat){
 		return daoLibro.getxCategoria(cat);

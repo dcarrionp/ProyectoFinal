@@ -21,9 +21,9 @@ import jakarta.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class LibroService {
-	
+
 	@Inject
-    private GestionLibros gl;
+	private GestionLibros gl;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -34,12 +34,10 @@ public class LibroService {
 			return Response.ok(libro).build();
 		} catch (Exception e) {
 			message error = new message(1, e.getMessage());
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-					.entity(error)
-					.build();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
 		}
 	}
-	
+
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -49,27 +47,23 @@ public class LibroService {
 			return Response.ok(libro).build();
 		} catch (Exception e) {
 			message error = new message(100, e.getMessage());
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(error)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(error).build();
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response list(){
+	public Response list() {
 		List<Libro> libros = gl.getAll();
-		if(libros.size()>0) {
+		if (libros.size() > 0) {
 			return Response.ok(libros).build();
-		}else {
+		} else {
 			message em = new message(10, "No se registran libros");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(em)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
-		
+
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{nombre}")
@@ -80,12 +74,10 @@ public class LibroService {
 			return Response.ok(li).build();
 		} catch (Exception e) {
 			message em = new message(11, "No se encuentra el libro");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(em)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/categorias/{nombre}")
@@ -96,9 +88,7 @@ public class LibroService {
 			return Response.ok(li).build();
 		} catch (Exception e) {
 			message em = new message(11, "No se encuentra el libro");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(em)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
 	}
 
@@ -112,9 +102,7 @@ public class LibroService {
 			return Response.ok(li).build();
 		} catch (Exception e) {
 			message em = new message(11, "No se encuentra el libro");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(em)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
 	}
 
@@ -128,28 +116,24 @@ public class LibroService {
 			return Response.ok(li).build();
 		} catch (Exception e) {
 			message em = new message(11, "No se encuentra el libro");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(em)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
 	}
-	
+
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response delete(@QueryParam("nombre") String ci) {
 		try {
-			if(gl.getLibro(ci)==null) {
+			if (gl.getLibro(ci) == null) {
 				throw new Exception("Libro no encontrado");
-			}else {
+			} else {
 				gl.borrar(ci);
 				return Response.ok().build();
 			}
 		} catch (Exception e) {
 			message error = new message(101, "Libro no encontrado");
-			return Response.status(Response.Status.NOT_FOUND)
-					.entity(error)
-					.build();
+			return Response.status(Response.Status.NOT_FOUND).entity(error).build();
 		}
 	}
-	
+
 }

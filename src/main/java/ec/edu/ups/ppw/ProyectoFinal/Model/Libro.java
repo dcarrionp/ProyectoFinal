@@ -21,7 +21,7 @@ public class Libro {
 	private Double precio;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Categoria")
+	@JoinColumn(name = "Categoria", nullable = false)
 	private Categoria Categoria;
 	private String autor;
 	private String imagen;
