@@ -1,13 +1,9 @@
 package ec.edu.ups.ppw.ProyectoFinal.Services;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import ec.edu.ups.ppw.ProyectoFinal.Model.Prestamo;
 import ec.edu.ups.ppw.ProyectoFinal.bussines.GestionPrestamos;
@@ -27,8 +23,6 @@ public class PrestamoService {
 
 	@Inject
 	private GestionPrestamos gp;
-
-	private static final Logger LOGGER = Logger.getLogger(PrestamoService.class.getName());
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)

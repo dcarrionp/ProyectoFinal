@@ -169,7 +169,7 @@ public class Inicio {
 		
 		
 		Usuario us = new Usuario();
-		us.setUsuario("dcarrionp");
+		us.setUsuario("diegoandrescarrion123@gmail.com");
 		us.setRol("admin");
 		
 		gu.insert(us);

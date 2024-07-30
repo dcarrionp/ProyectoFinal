@@ -16,17 +16,6 @@ public class Usuario {
 	private String usuario;
 	private String rol;
 
-	/*@OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario")
-	private List<Prestamo> historial;
-
-	public List<Prestamo> getHistorial() {
-		return historial;
-	}
-
-	public void setHistorial(List<Prestamo> historial) {
-		this.historial = historial;
-	}*/
-
 	public int getCodigo() {
 		return codigo;
 	}
