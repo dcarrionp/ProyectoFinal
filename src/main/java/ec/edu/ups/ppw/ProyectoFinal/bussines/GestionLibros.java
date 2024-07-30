@@ -56,4 +56,8 @@ public class GestionLibros {
 	public List<Libro> getDisponibilidad(boolean dispo){
 		return daoLibro.getLibrosByDisponibilidad(dispo);
 	}
+	
+	public void deactivateLibro(String nombre) {
+        daoLibro.deactivateLibro(nombre);
+    }
 }

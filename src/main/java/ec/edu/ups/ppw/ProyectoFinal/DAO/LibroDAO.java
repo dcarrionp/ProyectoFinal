@@ -102,5 +102,12 @@ public class LibroDAO {
 			throw new Exception("Libro no encontrado");
 		}
 	}
+	
+	public void deactivateLibro(String nombre) {
+        Libro libro = this.getLibro(nombre);
+        if (libro != null) {
+            libro.setEstado(false);
+        }
+    }
 
 }

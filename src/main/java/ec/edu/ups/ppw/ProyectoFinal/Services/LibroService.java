@@ -119,21 +119,16 @@ public class LibroService {
 			return Response.status(Response.Status.NOT_FOUND).entity(em).build();
 		}
 	}
-
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response delete(@QueryParam("nombre") String ci) {
-		try {
-			if (gl.getLibro(ci) == null) {
-				throw new Exception("Libro no encontrado");
-			} else {
-				gl.borrar(ci);
-				return Response.ok().build();
-			}
-		} catch (Exception e) {
-			message error = new message(101, "Libro no encontrado");
-			return Response.status(Response.Status.NOT_FOUND).entity(error).build();
-		}
-	}
+	
+	 @DELETE
+	    @Path("/{nombre}")
+	    public Response deleteLibro(@PathParam("nombre") String nombre) {
+	        try {
+	            gl.deactivateLibro(nombre);
+	            return Response.status(Response.Status.OK).build();
+	        } catch (Exception e) {
+	            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+	        }
+	    }
 
 }
