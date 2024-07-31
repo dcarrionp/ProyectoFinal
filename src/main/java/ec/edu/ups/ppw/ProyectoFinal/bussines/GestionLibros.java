@@ -11,27 +11,27 @@ import jakarta.inject.Inject;
 public class GestionLibros {
 
 	@Inject
-	private LibroDAO daoLibro;
-
+	private LibroDAO dao;
+	
 	public void setLibro(Libro li) {
-		daoLibro.insertLibro(li);
+		dao.insertLibro(li);
 	}
 	
 	public void actualiar(Libro cliente) {
-		daoLibro.update(cliente);
+		dao.update(cliente);
 	}
 	
 	public void borrar(String ci) {
-		Libro cli = daoLibro.read(ci);
-		daoLibro.delete(cli);
+		Libro cli = dao.read(ci);
+		dao.delete(cli);
 	}
 	
 	public List<Libro> getAll(){
-		return daoLibro.getAll();
+		return dao.getAll();
 	}
 	
 	public Libro getLibro(String nombre) throws Exception {
-		Libro li =  daoLibro.read(nombre);
+		Libro li =  dao.read(nombre);
 		if(nombre.length()<1) {
 			throw new Exception("Nombre Incorrecto");
 		}
@@ -41,23 +41,29 @@ public class GestionLibros {
 		return li;
 	}
 	
-    public void borrar(int codigoLibro) throws Exception {
-        daoLibro.borrar(codigoLibro);
-    }
-	
 	public List<Libro> getCategoria(String cat){
-		return daoLibro.getxCategoria(cat);
-	}
-
-	public List<Libro> getAutor(String autor){
-		return daoLibro.getLibrosByAutor(autor);
-	}
-
-	public List<Libro> getDisponibilidad(boolean dispo){
-		return daoLibro.getLibrosByDisponibilidad(dispo);
+		return dao.getxCategoria(cat);
 	}
 	
-	public void deactivateLibro(String nombre) {
-        daoLibro.deactivateLibro(nombre);
+	public List<Libro> getAutor(String autor){
+		return dao.getLibrosByAutor(autor);
+	}
+	
+	public List<Libro> getDisponibilidad(boolean dispo){
+		return dao.getLibrosByDisponibilidad(dispo);
+	}
+	
+	public void reducirStock(Libro libro) throws Exception {
+        if (libro.getStock() > 0) {
+            libro.setStock(libro.getStock() - 1);
+            dao.update(libro);
+        } else {
+            throw new Exception("No hay suficiente stock para este libro");
+        }
+    }
+    
+    public void aumentarStock(Libro libro) {
+        libro.setStock(libro.getStock() + 1);
+        dao.update(libro);
     }
 }

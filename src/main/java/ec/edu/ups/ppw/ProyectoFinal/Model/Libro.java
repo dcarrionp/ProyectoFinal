@@ -15,21 +15,22 @@ public class Libro {
 	@Id
 	@GeneratedValue
 	private int codigo;
-
+	
 	@Column(unique = true)
 	private String nombre;
 	private Double precio;
-
+	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Categoria", nullable = false)
-	private Categoria Categoria;
+	@JoinColumn(name = "categoria")
+	private Categoria categoria;
+	
 	private String autor;
 	private String imagen;
-	private Boolean estado;
+	private boolean estado;
+	private int stock;
 	
 	@Transient
     private String categoriaNombre;
-	
 	
 	public String getCategoriaNombre() {
 		return categoriaNombre;
@@ -42,6 +43,12 @@ public class Libro {
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 	public String getNombre() {
 		return nombre;
@@ -56,10 +63,10 @@ public class Libro {
 		this.precio = precio;
 	}
 	public Categoria getCategoria() {
-		return Categoria;
+		return categoria;
 	}
 	public void setCategoria(Categoria categoria) {
-		Categoria = categoria;
+		this.categoria = categoria;
 	}
 	public String getAutor() {
 		return autor;
@@ -73,15 +80,18 @@ public class Libro {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	public Boolean getEstado() {
-		return estado;
+	
+	public int getStock() {
+		return stock;
 	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
-
-	/*@OneToMany(mappedBy = "libro", fetch = FetchType.EAGER)
-	@JsonManagedReference
-    private List<prestamo> prestamos;*/
+	@Override
+	public String toString() {
+		return "libro [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", categoria=" + categoria
+				+ ", autor=" + autor + ", imagen=" + imagen + ", disponibilidad=" + estado + ", stock=" + stock
+				+ ", categoriaNombre=" + categoriaNombre + "]";
+	}
 
 }

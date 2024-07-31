@@ -15,99 +15,81 @@ public class LibroDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-
+	
 	public void insertLibro(Libro li) {
-		TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre",
-				Categoria.class);
-		query.setParameter("nombre", li.getCategoriaNombre());
-		Categoria managedCategoria;
-		try {
-			managedCategoria = query.getSingleResult();
-		} catch (Exception e) {
-			throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
-		}
-		li.setCategoria(managedCategoria);
-		em.persist(li);
-	}
+		TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre", Categoria.class);
+        query.setParameter("nombre", li.getCategoriaNombre());
+        Categoria managedCategoria;
+        try {
+            managedCategoria = query.getSingleResult();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
+        }
 
+        // Asignar la categoría gestionada al Libro
+        li.setCategoria(managedCategoria);
+
+        // Persistir el Libro
+        em.persist(li);
+    }
+	
 	public void update(Libro li) {
-		TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre",
-				Categoria.class);
-		query.setParameter("nombre", li.getCategoriaNombre());
-		Categoria managedCategoria;
-		try {
-			managedCategoria = query.getSingleResult();
-		} catch (Exception e) {
-			throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
-		}
 
-		li.setCategoria(managedCategoria);
-		em.merge(li);
+        // 1. Buscar la categoría en la base de datos usando el nombre de la categoría recibido
+        TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre", Categoria.class);
+        query.setParameter("nombre", li.getCategoriaNombre());
+        Categoria managedCategoria;
+        try {
+            managedCategoria = query.getSingleResult();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("La categoría con el nombre " + li.getCategoriaNombre() + " no existe.");
+        }
+        
+        li.setCategoria(managedCategoria);
+
+        // 3. Actualizar el Libro
+        em.merge(li);
 	}
-
+	
 	public void delete(Libro li) {
 		em.remove(li);
 	}
-
+	
 	public Libro read(String nombre) {
 		TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.nombre = :nombre", Libro.class);
-		query.setParameter("nombre", nombre);
-		try {
-			return query.getSingleResult();
-		} catch (Exception e) {
-			return null;
-		}
+        query.setParameter("nombre", nombre);
+        try {
+            return query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
 	}
-
-	@SuppressWarnings("unchecked")
-	public List<Libro> getAll() {
-		String jpql = "SELECT c FROM Libro c ORDER BY codigo";// Nombre de la entidad asi se haya cambiado el nombre
+	
+	public List<Libro> getAll(){
+		String jpql = "SELECT c FROM Libro c ORDER BY codigo";//Nombre de la entidad asi se haya cambiado el nombre
 		Query query = em.createQuery(jpql, Libro.class);
 		return query.getResultList();
 	}
-
-	public List<Libro> getxCategoria(String cat) {
+	
+	public List<Libro> getxCategoria(String cat){
 		String jpql = "SELECT l FROM Libro l JOIN l.Categoria c WHERE c.nombre = :CategoriaNombre ORDER BY l.codigo";
-		TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
-		query.setParameter("CategoriaNombre", cat);
-		return query.getResultList();
-	}
-
-	public List<Libro> getLibrosByAutor(String autor) {
-		String jpql = "SELECT l FROM Libro l WHERE l.autor = :autor ORDER BY l.codigo";
-		TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
-		query.setParameter("autor", autor);
-		return query.getResultList();
-	}
-
-	public List<Libro> getLibrosByDisponibilidad(boolean disponibilidad) {
-		String jpql = "SELECT l FROM Libro l WHERE l.disponibilidad = :disponibilidad ORDER BY l.codigo";
-		TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
-		query.setParameter("disponibilidad", disponibilidad);
-		return query.getResultList();
-	}
-
-	public Libro getLibro(String nombre) {
-		TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.nombre = :nombre", Libro.class);
-		query.setParameter("nombre", nombre);
-		List<Libro> libros = query.getResultList();
-		return libros.isEmpty() ? null : libros.get(0);
-	}
-
-	public void borrar(int codigoLibro) throws Exception {
-		Libro libro = em.find(Libro.class, codigoLibro);
-		if (libro != null) {
-			em.remove(libro);
-		} else {
-			throw new Exception("Libro no encontrado");
-		}
+	    TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
+	    query.setParameter("CategoriaNombre", cat);
+	    return query.getResultList();
 	}
 	
-	public void deactivateLibro(String nombre) {
-        Libro libro = this.getLibro(nombre);
-        if (libro != null) {
-            libro.setEstado(false);
-        }
-    }
+	public List<Libro> getLibrosByAutor(String autor) {
+	    String jpql = "SELECT l FROM Libro l WHERE l.autor = :autor ORDER BY l.codigo";
+	    TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
+	    query.setParameter("autor", autor);
+	    return query.getResultList();
+	}
+	
+	public List<Libro> getLibrosByDisponibilidad(boolean disponibilidad) {
+	    String jpql = "SELECT l FROM Libro l WHERE l.disponibilidad = :disponibilidad ORDER BY l.codigo";
+	    TypedQuery<Libro> query = em.createQuery(jpql, Libro.class);
+	    query.setParameter("disponibilidad", disponibilidad);
+	    return query.getResultList();
+	}
 
 }

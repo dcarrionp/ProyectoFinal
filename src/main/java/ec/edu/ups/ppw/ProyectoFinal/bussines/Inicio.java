@@ -45,128 +45,6 @@ public class Inicio {
 		}
 
 		
-		Libro li = new Libro();
-		
-		li.setNombre("Where the eyes can't go");
-		li.setPrecio(15.0);
-		li.setCategoriaNombre("Terror");
-		li.setImagen("https://firebasestorage.googleapis.com/v0/b/owl-s-quill.appspot.com/o/images%2FIMG_20220129_180131_682.jpg?alt=media&token=414ae1af-0000-45eb-8f8f-9706f1a95dec");
-		li.setEstado(true);
-		li.setAutor("Stephen King");
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-		
-		li = new Libro();
-		li.setAutor("Harper Lee");
-		li.setNombre("To Kill a Mockingbird");
-		li.setCategoriaNombre("Drama");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg");
-		li.setPrecio(25.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("George Orwell");
-		li.setNombre("1984");
-		li.setCategoriaNombre("Ciencia Ficcion");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg");
-		li.setPrecio(30.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("J.K. Rowling");
-		li.setNombre("Harry Potter and the Sorcerer's Stone");
-		li.setCategoriaNombre("Fantasia");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/91HHqVTAJQL.jpg");
-		li.setPrecio(35.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Anne Frank");
-		li.setNombre("The Diary of a Young Girl");
-		li.setCategoriaNombre("Biografia");
-		li.setEstado(true);
-		li.setImagen("https://images.thenile.io/r1000/9780241952443.jpg");
-		li.setPrecio(20.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-		
-		li = new Libro();
-		li.setAutor("Julio Cortazar");
-		li.setNombre("Rayuela");
-		li.setCategoriaNombre("Historia");
-		li.setEstado(true);
-		li.setImagen("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rayuela_JC.png/640px-Rayuela_JC.png");
-		li.setPrecio(20.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Arthur Conan Doyle");
-		li.setNombre("Sherlock Holmes: The Complete Collection");
-		li.setCategoriaNombre("Misterio");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/91XHDtSt7qL._AC_UF1000,1000_QL80_.jpg");
-		li.setPrecio(40.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Herman Melville");
-		li.setNombre("Moby Dick");
-		li.setCategoriaNombre("Aventura");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/61PBBKyZ1rL._AC_UF1000,1000_QL80_.jpg");
-		li.setPrecio(28.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Mary Shelley");
-		li.setNombre("Frankenstein");
-		li.setCategoriaNombre("Terror");
-		li.setEstado(true);
-		li.setImagen("https://mpd-biblio-covers.imgix.net/9780812551501.jpg");
-		li.setPrecio(22.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Robert Frost");
-		li.setNombre("The Poetry of Robert Frost");
-		li.setCategoriaNombre("Poesia");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81udWYEXefL.jpg");
-		li.setPrecio(18.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Jane Austen");
-		li.setNombre("Pride and Prejudice");
-		li.setCategoriaNombre("Romance");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/81-vL6r8+7L.jpg");
-		li.setPrecio(25.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		li = new Libro();
-		li.setAutor("Dale Carnegie");
-		li.setNombre("How to Win Friends and Influence People");
-		li.setCategoriaNombre("Auto Ayuda");
-		li.setEstado(true);
-		li.setImagen("https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg");
-		li.setPrecio(20.00);
-		System.out.println(li.toString());
-		gs.insertLibro(li);
-
-		
 		
 		Usuario us = new Usuario();
 		us.setUsuario("diegoandrescarrion123@gmail.com");
@@ -180,7 +58,139 @@ public class Inicio {
 		
 		gu.insert(us);
 
-		// Insertar usuarios
+Libro li = new Libro();
+		
+		li.setNombre("Where the eyes can't go");
+		li.setPrecio(15.0);
+		li.setCategoriaNombre("Terror");
+		li.setImagen("https://firebasestorage.googleapis.com/v0/b/owl-s-quill.appspot.com/o/images%2FIMG_20220129_180131_682.jpg?alt=media&token=414ae1af-0000-45eb-8f8f-9706f1a95dec");
+		li.setEstado(true);
+		li.setAutor("Stephen King");
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+		
+		li = new Libro();
+		li.setAutor("Harper Lee");
+		li.setNombre("To Kill a Mockingbird");
+		li.setCategoriaNombre("Drama");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg");
+		li.setPrecio(25.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("George Orwell");
+		li.setNombre("1984");
+		li.setCategoriaNombre("Ciencia Ficcion");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg");
+		li.setPrecio(30.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("J.K. Rowling");
+		li.setNombre("Harry Potter and the Sorcerer's Stone");
+		li.setCategoriaNombre("Fantasia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/91HHqVTAJQL.jpg");
+		li.setPrecio(35.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Anne Frank");
+		li.setNombre("The Diary of a Young Girl");
+		li.setCategoriaNombre("Biografia");
+		li.setEstado(true);
+		li.setImagen("https://images.thenile.io/r1000/9780241952443.jpg");
+		li.setPrecio(20.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+		
+		li = new Libro();
+		li.setAutor("Julio Cortazar");
+		li.setNombre("Rayuela");
+		li.setCategoriaNombre("Historia");
+		li.setEstado(true);
+		li.setImagen("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rayuela_JC.png/640px-Rayuela_JC.png");
+		li.setPrecio(20.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Arthur Conan Doyle");
+		li.setNombre("Sherlock Holmes: The Complete Collection");
+		li.setCategoriaNombre("Misterio");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/91XHDtSt7qL._AC_UF1000,1000_QL80_.jpg");
+		li.setPrecio(40.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Herman Melville");
+		li.setNombre("Moby Dick");
+		li.setCategoriaNombre("Aventura");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/61PBBKyZ1rL._AC_UF1000,1000_QL80_.jpg");
+		li.setPrecio(28.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Mary Shelley");
+		li.setNombre("Frankenstein");
+		li.setCategoriaNombre("Terror");
+		li.setEstado(true);
+		li.setImagen("https://mpd-biblio-covers.imgix.net/9780812551501.jpg");
+		li.setPrecio(22.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Robert Frost");
+		li.setNombre("The Poetry of Robert Frost");
+		li.setCategoriaNombre("Poesia");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81udWYEXefL.jpg");
+		li.setPrecio(18.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Jane Austen");
+		li.setNombre("Pride and Prejudice");
+		li.setCategoriaNombre("Romance");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/81-vL6r8+7L.jpg");
+		li.setPrecio(25.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
+		li = new Libro();
+		li.setAutor("Dale Carnegie");
+		li.setNombre("How to Win Friends and Influence People");
+		li.setCategoriaNombre("Auto Ayuda");
+		li.setEstado(true);
+		li.setImagen("https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg");
+		li.setPrecio(20.00);
+		li.setStock(10);
+		System.out.println(li.toString());
+		gs.insertLibro(li);
+
 		us = new Usuario();
 		us.setUsuario("usuario1@example.com");
 		us.setRol("common");
