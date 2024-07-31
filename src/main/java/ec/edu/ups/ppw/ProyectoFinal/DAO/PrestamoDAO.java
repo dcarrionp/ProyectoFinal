@@ -21,7 +21,7 @@ public class PrestamoDAO {
 	private EntityManager em;
 	
 	public void insert(Prestamo pre) {
-        TypedQuery<Usuario> userQuery = em.createQuery("SELECT u FROM Usuario u WHERE u.Usuario = :email", Usuario.class);
+        TypedQuery<Usuario> userQuery = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :email", Usuario.class);
         userQuery.setParameter("email", pre.getUsuarioEmail());
         Usuario managedUsuario;
         try {
@@ -78,7 +78,7 @@ public class PrestamoDAO {
 	}
 	
 	public List<Prestamo> getUsuario(String nombreUsuario){
-		String jpql = "SELECT p FROM Prestamo p JOIN p.Usuario u WHERE u.Usuario = :nombreUsuario ORDER BY p.codigo";
+		String jpql = "SELECT p FROM Prestamo p JOIN p.Usuario u WHERE u.usuario = :nombreUsuario ORDER BY p.codigo";
         TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
         query.setParameter("nombreUsuario", nombreUsuario);
         return query.getResultList();
@@ -99,7 +99,7 @@ public class PrestamoDAO {
 
     // Obtener los préstamos por Usuario
     public List<Prestamo> getPrestamosPorUsuario(Usuario user) {
-        String jpql = "SELECT p FROM Prestamo p WHERE p.Usuario = :Usuario";
+        String jpql = "SELECT p FROM Prestamo p WHERE p.usuario = :Usuario";
         TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
         query.setParameter("Usuario", user);
         return query.getResultList();

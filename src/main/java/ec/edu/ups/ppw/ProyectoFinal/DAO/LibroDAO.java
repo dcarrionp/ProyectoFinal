@@ -34,8 +34,8 @@ public class LibroDAO {
     }
 	
 	public void update(Libro li) {
-
-        // 1. Buscar la categoría en la base de datos usando el nombre de la categoría recibido
+		String categoriaNombre = li.getCategoriaNombre();
+	    System.out.println("Nombre de la categoría: " + categoriaNombre);
         TypedQuery<Categoria> query = em.createQuery("SELECT c FROM Categoria c WHERE c.nombre = :nombre", Categoria.class);
         query.setParameter("nombre", li.getCategoriaNombre());
         Categoria managedCategoria;
@@ -46,8 +46,6 @@ public class LibroDAO {
         }
         
         li.setCategoria(managedCategoria);
-
-        // 3. Actualizar el Libro
         em.merge(li);
 	}
 	
