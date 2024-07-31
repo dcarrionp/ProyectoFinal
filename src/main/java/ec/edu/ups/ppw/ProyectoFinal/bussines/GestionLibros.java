@@ -66,4 +66,12 @@ public class GestionLibros {
         libro.setStock(libro.getStock() + 1);
         dao.update(libro);
     }
+    
+    public void desactivarLibro(int codigo) {
+    	dao.desactivarLibro(codigo);
+    }
+
+    public void activarLibro(int codigo) {
+    	dao.activarLibro(codigo);
+    }
 }

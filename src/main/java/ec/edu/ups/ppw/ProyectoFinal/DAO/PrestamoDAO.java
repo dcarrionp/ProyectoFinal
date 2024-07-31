@@ -78,7 +78,7 @@ public class PrestamoDAO {
 	}
 	
 	public List<Prestamo> getUsuario(String nombreUsuario){
-		String jpql = "SELECT p FROM Prestamo p JOIN p.Usuario u WHERE u.usuario = :nombreUsuario ORDER BY p.codigo";
+		String jpql = "SELECT p FROM Prestamo p JOIN p.usuario u WHERE u.usuario = :nombreUsuario ORDER BY p.codigo";
         TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
         query.setParameter("nombreUsuario", nombreUsuario);
         return query.getResultList();
@@ -92,16 +92,16 @@ public class PrestamoDAO {
     }
 	
 	public List<Usuario> getUsuariosConPrestamos() {
-        String jpql = "SELECT DISTINCT p.Usuario FROM Prestamo p";
+        String jpql = "SELECT DISTINCT p.usuario FROM Prestamo p";
         TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
         return query.getResultList();
     }
 
     // Obtener los préstamos por Usuario
     public List<Prestamo> getPrestamosPorUsuario(Usuario user) {
-        String jpql = "SELECT p FROM Prestamo p WHERE p.usuario = :Usuario";
+        String jpql = "SELECT p FROM Prestamo p WHERE p.usuario = :usuario";
         TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
-        query.setParameter("Usuario", user);
+        query.setParameter("usuario", user);
         return query.getResultList();
     }
     
@@ -117,7 +117,7 @@ public class PrestamoDAO {
     
     public long getCountReservasByLibro(String nombreLibro) {
         TypedQuery<Long> query = em.createQuery(
-            "SELECT COUNT(p) FROM Prestamo p WHERE p.Libro.nombre = :nombreLibro AND p.estado = 'Reservado'", Long.class);
+            "SELECT COUNT(p) FROM Prestamo p WHERE p.libro.nombre = :nombreLibro AND p.estado = 'Reservado'", Long.class);
         query.setParameter("nombreLibro", nombreLibro);
         return query.getSingleResult();
     }

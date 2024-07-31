@@ -80,7 +80,7 @@ public class PrestamoService {
         try {
             byte[] pdfData = gp.generarReporteHistorialPrestamosPDF();
             return Response.ok(pdfData)
-                           .header("Content-Disposition", "attachment; filename=historial_prestamos.pdf")
+                           .header("Content-Disposition", "inline; filename=historial_prestamos.pdf")
                            .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
@@ -98,7 +98,7 @@ public class PrestamoService {
 
 	        byte[] pdfData = gp.generarReporteReservasEntreFechasPDF(fechaInicio, fechaFin);
 	        return Response.ok(pdfData)
-	                       .header("Content-Disposition", "attachment; filename=reservas_entre_fechas.pdf")
+	                       .header("Content-Disposition", "inline; filename=reservas_entre_fechas.pdf")
 	                       .build();
 	    } catch (Exception e) {
 	        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();

@@ -89,5 +89,21 @@ public class LibroDAO {
 	    query.setParameter("disponibilidad", disponibilidad);
 	    return query.getResultList();
 	}
+	
+	public void desactivarLibro(int codigo) {
+        Libro libro = em.find(Libro.class, codigo);
+        if (libro != null) {
+            libro.setEstado(false);
+            em.merge(libro);
+        }
+    }
+
+    public void activarLibro(int codigo) {
+        Libro libro = em.find(Libro.class, codigo);
+        if (libro != null) {
+            libro.setEstado(true);
+            em.merge(libro);
+        }
+    }
 
 }
